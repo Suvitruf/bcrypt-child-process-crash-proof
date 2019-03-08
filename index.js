@@ -2,11 +2,12 @@
 
 const {Worker, isMainThread} = require('worker_threads');
 
-if(isMainThread)
+if (isMainThread)
     console.log("I'm ok, because I'm alpha main");
 else
     console.log("I'm sad, because I can't load bcrypt");
 
+const BCRYPT_SALT_ROUNDS = 12;
 const bcrypt = require('bcrypt');
 
 function runTestWorker(workerData) {
@@ -22,10 +23,19 @@ function runTestWorker(workerData) {
     })
 }
 
+async function testHash() {
+    const hash = await bcrypt.hash("test_password", BCRYPT_SALT_ROUNDS);
+    const ok = await bcrypt.compare("test_password", hash);
+    console.log(ok ? "same" : "different");
+}
+
 async function run() {
     const result = await runTestWorker('I will crash your app  (｡•́︿•̀｡)');
     console.log(result);
 }
 
-if(isMainThread)
-    run().catch(err => console.error(err));
+testHash()
+    .then(() => {
+        if (isMainThread)
+            run().catch(err => console.error(err));
+    });

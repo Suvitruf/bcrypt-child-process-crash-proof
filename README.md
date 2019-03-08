@@ -1,6 +1,15 @@
 # bcrypt crashes in child process
 
-If you are trying to load bcrypt in child process:
+The output should be:
+
+```
+I'm ok, because I'm alpha main
+same
+I'm sad, because I can't load bcrypt
+same
+```
+
+But if you are trying to load bcrypt in child process:
 
     const bcrypt = require('bcrypt');
 
