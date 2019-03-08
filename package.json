@@ -1,0 +1,23 @@
+{
+  "name": "bcrypt-child-process-crash-proof",
+  "version": "0.0.1",
+  "description": "Simple project to show bcrypt crashing in child process",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Suvitruf/bcrypt-child-process-crash-proof"
+  },
+  "author": {
+    "name": "Suvitruf (aka Andrei Apanasik)",
+    "url": "https://github.com/Suvitruf"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Suvitruf/bcrypt-child-process-crash-proof",
+  "dependencies": {
+    "bcrypt": "^3.0.4"
+  },
+  "keywords": [
+    "bcrypt",
+    "bug",
+    "worker-threads"
+  ]
+}
